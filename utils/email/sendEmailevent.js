@@ -16,6 +16,8 @@ eventEmitter.on("sendActiveEmails", async (data) => {
         const safeEncryptedToken = encodeURIComponent(encryptedactivetoken);
         const linkAuth = `https://saraha-api.vercel.app/user/actve/${safeEncryptedToken}`
         const emailSender = await sendEmail(email, "Active Your Email", "Confirm Your Email", `<a href=${linkAuth}>Conferm Your Email</a>`)
+        console.log(`confrimation to sent ${email}`,emailSender);
+
     } catch (error) {
 
         console.error(
