@@ -12,5 +12,5 @@ userController.post('/profile',authorization,authRole(Object.values(defaultRoles
 userController.patch('/update',validation(updateProfileSchema),authorization,authRole(Object.values(defaultRoles)),confirmEmailFirst(),authFreeze(),updateProfile)
 userController.patch('/update/password',validation(updatePasswordSchema),authorization,authRole(Object.values(defaultRoles)),confirmEmailFirst(),authFreeze(),updatePassword)
 userController.post('/shere/:id',validation(shereProfileSchema),shereProfile)
-userController.get('/actve/:encryptedactivetoken',authFreeze(),actve);
+userController.get('/actve/:encryptedactivetoken',actve);
 export default userController;

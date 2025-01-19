@@ -5,16 +5,14 @@ import nodemailer from "nodemailer"
 export const sendEmail = async (to, title , subject, html,  attachments) => {
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 587,
-        secure: false, // TLS
+        port: 465,
+        secure: true, // Use SSL/TLS
         auth: {
             user: process.env.AUTH_EMAIL,
             pass: process.env.AUTH_EMAIL_PASSWORD,
         },
-        tls: {
-            rejectUnauthorized: false, // لتجنب مشاكل الشهادات
-        },
     });
+    
     const info = await transporter.sendMail({
         from: `${title} ${process.env.AUTH_EMAIL}`,
         to: to ? to : null,
