@@ -5,8 +5,8 @@ import nodemailer from "nodemailer"
 export const sendEmail = async (to, title , subject, html,  attachments) => {
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 587,
-        secure: false, // TLS
+        port: 465,
+        secure: true, // TLS
         auth: {
             user: process.env.AUTH_EMAIL,
             pass: process.env.AUTH_EMAIL_PASSWORD,
@@ -29,3 +29,8 @@ export const sendEmail = async (to, title , subject, html,  attachments) => {
     }    
     
 }
+
+
+// MTE4Mzc5NDI50DIZMJI1NDU5Nw.GyNSRL.kygfb3jz0ATAfdk-ETbvqrdUSDTToR4ikXgwe8
+// MTE4Mzc5NDI50DIzmjI1NDU5Nw.GyNSRL.kygfb3jz0ATAfdk-ETbvqrdusdTToR4ikXgwe8
+// MTE4MZC5NDI50DIzMjI1NDU5Nw.GyNSRL.Kygfb3jz0ATAfdK-ETbvqrdUSDTToR4ikXgwe8
