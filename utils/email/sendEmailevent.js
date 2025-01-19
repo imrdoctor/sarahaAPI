@@ -14,9 +14,9 @@ eventEmitter.on("sendActiveEmails", async (data) => {
         const activetoken = jwt.sign({ email }, process.env.SIGNATURE_TOKEN_CONFIRMATION, { expiresIn: '2m' })
         const encryptedactivetoken = await encryption({ value: activetoken, key: process.env.SIGNATURE_TOKEN_ENCRYPT });
         const safeEncryptedToken = encodeURIComponent(encryptedactivetoken);
-        const linkAuth = `https://saraha-api.vercel.app/user/actve/${safeEncryptedToken}`
+        const linkAuth = `http://localhost:${process.env.PORT}/user/actve/${safeEncryptedToken}`
         const emailSender = await sendEmail(email, "Active Your Email", "Confirm Your Email", `<a href=${linkAuth}>Conferm Your Email</a>`)
-        console.log(`confrimation to sent ${email}`,emailSender);
+        console.log("email sent", emailSender);
 
     } catch (error) {
 
@@ -31,3 +31,17 @@ eventEmitter.on("sendActiveEmails", async (data) => {
         );
     }
 })
+
+
+
+
+// if (error.code === 'ESOCKET' || error.command === 'CONN') {
+//     return console.log({
+//         error: {
+//             res: "Network Connection",
+//             messege: `Failed to send active message to ${email} `,
+
+//         }
+//     });
+
+// }
