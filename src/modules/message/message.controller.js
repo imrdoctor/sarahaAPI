@@ -7,6 +7,6 @@ const messageController = Router();
 messageController.post('/send',validation(sendMessageSchema),sendMessage)
 messageController.get('/getall',authorization,authFreeze(),getMessages)
 messageController.get('/get/:id',validation(getMessageByIdSchema),authorization,authFreeze(),getMessagesById)
-messageController.get('/favorit/:mid',validation(FavoriteMessageByIdSchema),authorization,authFreeze(),favoriteMessage)
+messageController.post('/favorit/:mid',validation(FavoriteMessageByIdSchema),authorization,authFreeze(),favoriteMessage)
 messageController.get('/favorits',validation(getFavoriteMessages),authorization,authFreeze(),getFavoriteMessages)
 export default messageController;
